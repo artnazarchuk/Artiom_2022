@@ -1,13 +1,27 @@
 {% extends "base.html" %}
-
 {% block page_content %}
-<div class="row">
-    <div class="col-md-8 blog-main blog-post">
-        <h2 class="blog-post-title font-italic">{{ post_one.title }}</h2>
-        <p class="blog-post-meta">{{ post_one.created_on }}</p>
-        <p class="">{{ post_one.body }}</p>
-        <hr>
-        {{ post_one.id }}
-    </div>
+<div class="col-md-8 offset-md-2">
+  <h1>{{ post.title }}</h1>
+  <small>
+      {{ post.created_on.date }}
+      Категории:
+      {% for category in post.categories.all %}
+      <a href="">
+          {{ category.name }}
+      </a>
+      {% endfor %}
+  </small>
+  <p>{{ post.body | linebreaks }}</p>
+    <small>
+        Комментарии:
+        <br> <br>
+        {% for comment in comments %}
+        Автор: {{ comment.author }}
+        <br>
+        {{ comment.body }}
+        <br> <br>
+        {% endfor %}
+    </small>
+
 </div>
 {% endblock %}

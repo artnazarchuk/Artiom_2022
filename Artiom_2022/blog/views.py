@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Comment
 
 def blog_index(request):
     posts = Post.objects.order_by('-created_on')
@@ -9,9 +9,11 @@ def blog_index(request):
     return render(request, 'blog_index.html', context)
 
 def blog_detail(request, pk):
-    post_one = Post.objects.get(pk=pk)
+    post = Post.objects.get(pk=pk)
+    comments = Comment.objects.filter(post=post)
     context = {
-        'post_one': post_one,
+        'post': post,
+        'comments': comments
     }
     return render(request, 'blog_detail.html', context)
 

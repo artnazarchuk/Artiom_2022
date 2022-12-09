@@ -11,9 +11,9 @@ def project_index(request):
 
 # запрос одного объекта через get()
 def project_detail(request, pk):
-    project_one = Project.objects.get(pk=pk)
+    project = Project.objects.get(pk=pk)
     context = {
-        'project_one': project_one
+        'project': project
     }
     return render(request, 'project_detail.html', context)
 

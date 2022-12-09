@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-8 blog-main blog-post">
+        <h2 class="blog-post-title font-italic">{{ post_one.title }}</h2>
+        <p class="blog-post-meta">{{ post_one.created_on }}</p>
+        <p class="">{{ post_one.body }}</p>
+        <hr>
+        {{ post_one.id }}
+    </div>
+</div>
+{% endblock %}
